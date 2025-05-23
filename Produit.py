@@ -1,4 +1,5 @@
 import csv
+import json
 from typing import Tuple
 # Exemple d'utilisation :
 # produits = [(1, "ampoules (del, unité)", 2.5), (2, "lampe", 10)]
@@ -97,7 +98,11 @@ class ProduitEntite:
         """
         return nom_produit.capitalize().replace(" ", "_").replace("-", "__")
 
-    def afficher(self):
+    def imprimer(self):
         for p in self.produits:
             print(p)
+
+    def afficher(self):
+        return json.dumps(self.produits)
+    
 

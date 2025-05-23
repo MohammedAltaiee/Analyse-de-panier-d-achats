@@ -5,12 +5,6 @@ import os
 from typing import List
 from fastapi import FastAPI
 
-app = FastAPI()
-
-@app.get("/bonjour")
-async def root_bonjour():
-    return {"message": "Bonjour Hello la classe NPower QC 2025 "}
-
 
 
 
@@ -20,11 +14,21 @@ import Produit
 
 produits = Produit.ProduitEntite([])
 
+app = FastAPI()
+
+@app.get("/bonjour")
+async def root_bonjour():
+    return {"message": "Bonjour Hello la classe NPower QC 2025 "}
+
+@app.get("/test/produits")
+async def test_tout_les_produits():
+    return produits.afficher()
+
 def main():
     produits = Produit.ProduitEntite([])
     produits. ajouter_produits_depuis_csv("./data/produits.csv")
 
-    produits.afficher()
+    produits.imprimer()
 
 
 if __name__ == "__main__":
