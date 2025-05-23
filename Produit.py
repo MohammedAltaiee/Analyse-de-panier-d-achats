@@ -139,19 +139,19 @@ class ProduitEntite:
     def afficher(self):
         return json.dumps(self.produits)
 
-    # # utilitaire classe Python
+    # utilitaire classe Python
     
-    # def __str__(self):
-    #     return self.afficher()
+    def __str__(self):
+        return self.afficher()
 
-    # def __repr__(self):
-    #     return self.afficher()
+    def __repr__(self):
+        return self.afficher()
     
-    # def __len__(self):
-    #     return len(self.produits)
+    def __len__(self):
+        return len(self.produits)
     
-    # def __getitem__(self, index: int):
-    #     return self.produits[index]
+    def __getitem__(self, index: int):
+        return self.produits[index]
 
     # def __getitem__(self, name: str):
     #     return self.rechercher_produit(name)
