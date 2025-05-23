@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+
+
+# pip install "fastapi[standard]" uvicorn
