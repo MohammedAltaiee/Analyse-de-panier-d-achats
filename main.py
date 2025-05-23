@@ -26,7 +26,7 @@ async def test_tout_les_produits():
 
 def main():
     produits = Produit.ProduitEntite([])
-    produits. ajouter_produits_depuis_csv("./data/produits.csv")
+    produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
     produits.imprimer()
 
