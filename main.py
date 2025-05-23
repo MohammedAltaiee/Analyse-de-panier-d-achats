@@ -7,8 +7,8 @@ from fastapi import FastAPI
 
 import Produit
 
-produits = Produit.ProduitEntite([])
-produits.ajouter_produits_depuis_csv("./data/produits.csv")
+test_produits = Produit.ProduitEntite([])
+test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 app = FastAPI()
 
@@ -17,12 +17,18 @@ async def root_bonjour():
     return {"message": "Bonjour Hello la classe NPower QC 2025 "}
 
 @app.get("/test/produits")
-async def test_tout_les_produits():
-    return produits.afficher()
+async def test_tout_produits_get():
+    return test_produits.afficher()
+
+@app.post("/test/produits")
+async def test_tout_produits_post(json_param: str):
+    return json_param
+
+
 
 def main():
     produits = Produit.ProduitEntite([])
-    produits.ajouter_produits_depuis_csv("./data/produits.csv")
+    # produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
     produits.imprimer()
 
