@@ -21,9 +21,9 @@ async def test_tout_produits_get():
     return test_produits.afficher()
 
 @app.post("/test/produits")
-async def test_tout_produits_post(json_param: str):
-    print("lalalala" + json_param)
-    return json_param
+async def test_tout_produits_post(param: str):
+    print("lalalala" + param)
+    return {"testing": param}
 
 
 
