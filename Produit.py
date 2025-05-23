@@ -1,6 +1,8 @@
 import csv
 import json
 from typing import Tuple
+from pydantic import BaseModel
+
 # Exemple d'utilisation :
 # produits = [(1, "ampoules (del, unité)", 2.5), (2, "lampe", 10)]
 # pm = ProduitEntite(produits)
@@ -12,6 +14,12 @@ class ProduitEntite:
         # produits: list of tuples (id, nom, prix)
         # type: [(int, str, float)]
         self.produits = produits
+
+    class ProduitType(BaseModel):
+        id: int | None = None
+        nom: str
+        prix: float
+
 
     # Methode pour ajouter un produit d'un fichier csv avec
     #  ID,Product,Unit Price (CAD)
