@@ -8,8 +8,9 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.get("/bonjour")
-async def root():
-    return {"message": "Hello World"}
+async def root_bonjour():
+    return {"message": "Bonjour Hello la classe NPower QC 2025 "}
+
 
 
 
