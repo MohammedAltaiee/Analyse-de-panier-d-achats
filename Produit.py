@@ -39,7 +39,7 @@ class ProduitEntite:
 
 
 
-    def ajouter_produit(self, id_produit, nom_produit, prix_produit):
+    def ajouter_produit_tuple(self, id_produit, nom_produit, prix_produit):
         # Verification des types
         # id_produit: int
         # nom_produit: str
@@ -51,10 +51,35 @@ class ProduitEntite:
             raise ValueError("Le prix du produit ne peut pas être négatif.")
         # ajouter ou ecraser/maj le produit
         self.produits.append((id_produit, ProduitEntite.canoniser_nom(nom_produit), prix_produit))
+    
+    def ajouter_produit(self, nom_produit, prix_produit):
+        """
+        (nom, prix)
+        puis on cree un nouvel id so nom est nouveau
+        """
+
+        # Verification de l'existence de nom dans produits
+        # for p in self.produits:
+        #     if p[1] == ProduitEntite.canoniser_nom(nom_produit):
+        #         raise ValueError("Le produit existe déjà).")
+        if self.rechercher_produit(nom_produit) != None:
+            raise ValueError("Le produit existe déjà.")
+        
+        nouveau_id = max([p[0] for p in self.produits]) + 1
+        self.produits.append((nouveau_id, ProduitEntite.canoniser_nom(nom_produit), prix_produit))
+
+    def maj_produit_par_id(self, id_produit, nouveau_nom_produit, nouveau_prix_produit):
+        self.produits[id_produit].nom = nouveau_nom_produit
+        self.produits[id_produit].prix = nouveau_prix_produit
+        # self.produits[id_produit] = (id_produit, nouveau_nom_produit, nouveau_prix_produit)
+    
+    def maj_produit_nom_par_id(self, id_produit, nouveau_nom_produit):
+        self.produits[id_produit].nom = nouveau_nom_produit
 
     def supprimer_produit_par_id(self, id_produit):
         """
-        Supprime un  produit  par ID."""
+        Supprime un  produit  par ID.
+        """
         # verification de type
         # id_produit: int
         if not isinstance(id_produit, int):
@@ -80,6 +105,7 @@ class ProduitEntite:
                 return
 
 
+    # Utilitaires
     def rechercher_produit(self, nom_produit) -> Tuple[int, str, float] | None:
         """
         Rechercher un  produit  par nom -> ID (type int)
@@ -102,9 +128,9 @@ class ProduitEntite:
         Exemples : 
         "ampoules DEL" -> "Ampoules_Del"
         "lampe" -> "Lampe"
-        "lampe-de-bureau" -> "Lampe__de__bureau"
+        "lampe-de-bureau" -> "Lampe-de-bureau"
         """
-        return nom_produit.capitalize().replace(" ", "_").replace("-", "__")
+        return nom_produit.capitalize().replace(" ", "_") #.replace("-", "__")
 
     def imprimer(self):
         for p in self.produits:
@@ -112,5 +138,39 @@ class ProduitEntite:
 
     def afficher(self):
         return json.dumps(self.produits)
+
+    # utilitaire classe Python
+    
+    def __str__(self):
+        return self.afficher()
+
+    def __repr__(self):
+        return self.afficher()
+    
+    def __len__(self):
+        return len(self.produits)
+    
+    def __getitem__(self, index: int):
+        return self.produits[index]
+
+    def __getitem__(sef, name: str):
+        return self.rechercher_produit(name)
+    
+    def __setitem__(self, index, prod: Tuple[int, str, float]):
+        self.produits[index] = prod
+    
+    def __setitem__(self, name, prod_name: str):
+        prod = self.rechercher_produit(prod_name)
+        if prod == None:
+            raise ValueError("Le produit n'existe pas.")
+        self.produits[name] = prod
     
 
+    def __delitem__(self, index):
+        del self.produits[index]
+    
+    def __iter__(self):
+        return iter(self.produits)
+    
+    def __contains__(self, item):
+        return item in self.produits
