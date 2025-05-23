@@ -5,14 +5,10 @@ import os
 from typing import List
 from fastapi import FastAPI
 
-
-
-
-
-
 import Produit
 
 produits = Produit.ProduitEntite([])
+produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 app = FastAPI()
 
@@ -25,10 +21,10 @@ async def test_tout_les_produits():
     return produits.afficher()
 
 def main():
-    produits = Produit.ProduitEntite([])
-    produits.ajouter_produits_depuis_csv("./data/produits.csv")
+    # produits = Produit.ProduitEntite([])
+    # produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
-    produits.imprimer()
+    # produits.imprimer()
 
 
 if __name__ == "__main__":
