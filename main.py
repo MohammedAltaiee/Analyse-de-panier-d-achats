@@ -6,6 +6,10 @@ from typing import List
 from fastapi import FastAPI
 
 import Produit
+# import ProduitEntite.Item
+
+
+
 
 test_produits = Produit.ProduitEntite([])
 test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
@@ -20,15 +24,15 @@ async def root_bonjour():
 async def test_tout_produits_get():
     return test_produits.afficher()
 
-# @app.post("/test/produits")
-# async def test_tout_produits_post(params: Produit.ProduitEntite.ProduitType):
-#     print(params)
-#     return {"testing": params}
-
 @app.post("/test/produits")
-async def test_tout_produits_post_text(params: Produit.ProduitEntite.ProduitType):
-    print(str(params))
-    return {"testing": str(params)}
+async def test_tout_produits_post(params: Produit.ProduitEntite.Item):
+    print(params)
+    return {"testing": params}
+
+# @app.post("/test/produits")
+# async def test_tout_produits_post_text(params: Produit.ProduitEntite.ProduitType):
+#     print(str(params))
+#     return {"testing": str(params)}
 
 
 

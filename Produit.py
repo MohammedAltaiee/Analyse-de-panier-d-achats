@@ -15,7 +15,7 @@ class ProduitEntite:
         # type: [(int, str, float)]
         self.produits = produits
 
-    class ProduitType(BaseModel):
+    class Item(BaseModel):
         id: int
         nom: str
         prix: float
