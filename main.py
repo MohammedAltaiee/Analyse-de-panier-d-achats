@@ -2,6 +2,7 @@
 
 import json
 import os
+import logging
 from typing import List
 from flask import Flask, request, jsonify
 from pydantic import BaseModel
@@ -15,10 +16,10 @@ test_produits = Produit.ProduitEntite([])
 test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 global prods  # Declare produits as global to modify it
-prods = Produit.ProduitEntite([])
+prods = Produit.ProduitEntite([(0, "Le_Savoir",0)])
 # produits.ajouter_produits_depuis_csv("./data/produits.csv")
-prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
-print(prods)
+# prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+print_(prods)
 
 
 @app.route('/bonjour', methods=['GET'])
@@ -61,6 +62,17 @@ def test_tout_produits_post():
 
 
 def main():
+
+    # Configure logging (usually done once at the beginning of your script)
+    logging.basicConfig(level=logging.DEBUG,  # Set the minimum level to capture
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    filename='app.log',  # Optional: log to a file
+                    filemode='w')  # Optional: overwrite the log file each time
+
+    # Create a logger for your module (or use the root logger)
+    logger = logging.getLogger(__name__)  # Or logging.getLogger('my_app')
+
+
     # produits = Produit.ProduitEntite([])
     # produits.ajouter_produits_depuis_csv("./data/produits.csv")
     # produits.imprimer()
@@ -81,6 +93,8 @@ def main():
     prods = Produit.ProduitEntite([])
     prods.ajouter_produits_depuis_csv("./data/produits.csv")
     prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+
+    logger.debug("Debug message: {prods}")
     
     print("Produits charges.")
 
