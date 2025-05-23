@@ -22,7 +22,7 @@ async def test_tout_produits_get():
 
 @app.post("/test/produits")
 async def test_tout_produits_post(json_param: str):
-    print(json_param)
+    print("lalalala" + json_param)
     return json_param
 
 
