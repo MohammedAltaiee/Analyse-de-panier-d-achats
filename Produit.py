@@ -139,38 +139,38 @@ class ProduitEntite:
     def afficher(self):
         return json.dumps(self.produits)
 
-    # utilitaire classe Python
+    # # utilitaire classe Python
     
-    def __str__(self):
-        return self.afficher()
+    # def __str__(self):
+    #     return self.afficher()
 
-    def __repr__(self):
-        return self.afficher()
+    # def __repr__(self):
+    #     return self.afficher()
     
-    def __len__(self):
-        return len(self.produits)
+    # def __len__(self):
+    #     return len(self.produits)
     
-    def __getitem__(self, index: int):
-        return self.produits[index]
+    # def __getitem__(self, index: int):
+    #     return self.produits[index]
 
-    def __getitem__(self, name: str):
-        return self.rechercher_produit(name)
+    # def __getitem__(self, name: str):
+    #     return self.rechercher_produit(name)
     
-    def __setitem__(self, index, prod: Tuple[int, str, float]):
-        self.produits[index] = prod
+    # def __setitem__(self, index, prod: Tuple[int, str, float]):
+    #     self.produits[index] = prod
     
-    def __setitem__(self, name, prod_name: str):
-        prod = self.rechercher_produit(prod_name)
-        if prod == None:
-            raise ValueError("Le produit n'existe pas.")
-        self.produits[name] = prod
+    # def __setitem__(self, name, prod_name: str):
+    #     prod = self.rechercher_produit(prod_name)
+    #     if prod == None:
+    #         raise ValueError("Le produit n'existe pas.")
+    #     self.produits[name] = prod
     
 
-    def __delitem__(self, index):
-        del self.produits[index]
+    # def __delitem__(self, index):
+    #     del self.produits[index]
     
-    def __iter__(self):
-        return iter(self.produits)
+    # def __iter__(self):
+    #     return iter(self.produits)
     
-    def __contains__(self, item):
-        return item in self.produits
+    # def __contains__(self, item):
+    #     return item in self.produits
