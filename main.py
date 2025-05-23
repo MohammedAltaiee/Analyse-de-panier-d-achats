@@ -74,14 +74,14 @@ def main():
     # produits = Produit.ProduitEntite([])
     # produits.ajouter_produits_depuis_csv("./data/produits.csv")
     # print("Produits loaded.")
-    pass  # Or any other initialization
+    # pass  # Or any other initialization
 
-    # global prods  # Declare produits as global to modify it
-    # prods = Produit.ProduitEntite([])
-    # # produits.ajouter_produits_depuis_csv("./data/produits.csv")
-    # prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+    global prods  # Declare produits as global to modify it
+    prods = Produit.ProduitEntite([])
+    produits.ajouter_produits_depuis_csv("./data/produits.csv")
+    prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
     
-    # print("Produits charges.")
+    print("Produits charges.")
 
 if __name__ == "__main__":
     main()
