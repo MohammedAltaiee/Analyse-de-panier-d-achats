@@ -16,6 +16,9 @@ def root_bonjour():
     return jsonify({"message": "Bonjour Hello la classe NPower QC 2025"})
 
 
+test_produits = Produit.ProduitEntite([])
+test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
+
 @app.route("/test/produits", methods=["GET"])
 def test_tout_produits_get():
     return jsonify(test_produits.afficher())
@@ -48,8 +51,8 @@ def main():
     # produits.ajouter_produits_depuis_csv("./data/produits.csv")
     produits.imprimer()
 
-    test_produits = Produit.ProduitEntite([])
-    test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
+    # test_produits = Produit.ProduitEntite([])
+    # test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
     # The Flask app handles requests, so this part is less relevant now.
     # You might still want to initialize things here if needed.
