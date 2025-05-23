@@ -38,7 +38,7 @@ logger.debug("Debut script, Debug message: {prods}")
 @app.route('/bonjour', methods=['GET'])
 def root_bonjour():    
     res = {"message": "Bonjour par default :) Hello la classe NPower QC 2025."}
-    print(prods)
+    logger.debug("HIT root_bonjour(): {prods}")
     if prods.produits[0] == (0, "Le_Savoir", 0):
         res ={"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir n a pas de prix :D"}
     else:
