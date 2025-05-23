@@ -4,6 +4,7 @@ import json
 import os
 from typing import List
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 import Produit
 # import ProduitEntite.Item
