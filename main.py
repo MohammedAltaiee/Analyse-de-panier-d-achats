@@ -16,7 +16,7 @@ test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 @app.route('/bonjour', methods=['GET'])
 def root_bonjour():    
-    res: str
+    res: str = ''
     if prods.produits[0] == 0:
         res ='"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir n a pas de prix :D"'
     else:
