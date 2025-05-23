@@ -57,7 +57,7 @@ class ProduitEntite:
                     nom_produit = ligne['Product']
                     prix_str = ligne['Unit Price (CAD)'].replace('$', '').replace(',', '.').strip()
                     prix_produit = float(prix_str)
-                    self.ajouter_produit(id_produit, nom_produit, prix_produit)
+                    ajouter_produit(id_produit, nom_produit, prix_produit)
         except Exception as e:
             print(f"Erreur lors de l'ajout des produits depuis le CSV : {e}")
 
