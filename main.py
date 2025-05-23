@@ -11,13 +11,13 @@ import Produit
 
 app = Flask(__name__)
 
+test_produits = Produit.ProduitEntite([])
+test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
+
 @app.route('/bonjour', methods=['GET'])
 def root_bonjour():
     return jsonify({"message": "Bonjour Hello la classe NPower QC 2025"})
 
-
-test_produits = Produit.ProduitEntite([])
-test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 @app.route("/test/produits", methods=["GET"])
 def test_tout_produits_get():
