@@ -153,7 +153,7 @@ class ProduitEntite:
     def __getitem__(self, index: int):
         return self.produits[index]
 
-    def __getitem__(sef, name: str):
+    def __getitem__(self, name: str):
         return self.rechercher_produit(name)
     
     def __setitem__(self, index, prod: Tuple[int, str, float]):
