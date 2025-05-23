@@ -22,50 +22,15 @@ def root_bonjour():
     return jsonify({"message": "Bonjour Hello la classe NPower QC 2025"})
 
 
-# @app.get("/bonjour")
-# async def root_bonjour():
-#     return {"message": "Bonjour Hello la classe NPower QC 2025 "}
+@app.route("/test/produits", methods=["GET"])
+def test_tout_produits_get():
+    return jsonify(test_produits.afficher())
 
-# @app.get("/test/produits")
-# async def test_tout_produits_get():
-#     return test_produits.afficher()
-
-# @app.post("/test/produits")
-# async def test_tout_produits_post(payload: Produit.ProduitEntite.Item):
-#     p = Produit.ProduitEntite.Item()
-#     p.id = 12345
-#     p.nom = "whatwaaaa"
-#     p.prix = 3.1415
-#     print("P::: " + p)
-#     print("PAYLOAD::: " + payload)
-#     return {"testing": p}
-
-# @app.post("/test/produits")
-# async def test_tout_produits_post_text(params: Produit.ProduitEntite.ProduitType):
-#     print(str(params))
-#     return {"testing": str(params)}
 
 # class ItemPayload(BaseModel):
 #     id: int
 #     nom: str
 #     prix: float
-
-# class RequestBody(BaseModel):
-#     payload: ItemPayload
-
-
-# @app.post("/test/produits")
-# async def test_tout_produits_post(request_body):
-#     item_data : ItemPayload =  request_body.payload
-#     print(f"Received item: {item_data}")
-#     return {"testing": item_data}
-
-
-class ItemPayload(BaseModel):
-    id: int
-    nom: str
-    prix: float
-
 
 @app.route('/test/produits', methods=['POST'])
 def test_tout_produits_post():
@@ -74,7 +39,9 @@ def test_tout_produits_post():
         if not data or 'payload' not in data:
             return jsonify({"error": "Invalid payload"}), 400
 
-        item_data = ItemPayload(**data['payload'])  # Validate and parse with Pydantic
+        # item_data = ItemPayload(**data['payload'])  # Validate and parse with Pydantic
+        item_data = Produit.ProduitEntite.Item(**data['payload'])  # Validate and parse with Pydantic
+
         print(f"Received item: {item_data}")
         return jsonify({"testing": item_data.dict()})  # Return as a dictionary
 
