@@ -9,12 +9,6 @@ from pydantic import BaseModel
 import Produit
 # import ProduitEntite.Item
 
-
-
-
-# test_produits = Produit.ProduitEntite([])
-# test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
-
 app = Flask(__name__)
 
 @app.route('/bonjour', methods=['GET'])
@@ -53,6 +47,9 @@ def main():
     produits = Produit.ProduitEntite([])
     # produits.ajouter_produits_depuis_csv("./data/produits.csv")
     produits.imprimer()
+
+    test_produits = Produit.ProduitEntite([])
+    test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
     # The Flask app handles requests, so this part is less relevant now.
     # You might still want to initialize things here if needed.
