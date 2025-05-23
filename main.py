@@ -14,6 +14,12 @@ app = Flask(__name__)
 test_produits = Produit.ProduitEntite([])
 test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
+ global prods  # Declare produits as global to modify it
+prods = Produit.ProduitEntite([])
+# produits.ajouter_produits_depuis_csv("./data/produits.csv")
+prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+
+
 @app.route('/bonjour', methods=['GET'])
 def root_bonjour():    
     res = {"message": "Bonjour par default :) Hello la classe NPower QC 2025."}
@@ -69,10 +75,10 @@ def main():
     # print("Produits loaded.")
     # or pass  # Or any other initialization
 
-    global prods  # Declare produits as global to modify it
-    prods = Produit.ProduitEntite([])
-    # produits.ajouter_produits_depuis_csv("./data/produits.csv")
-    prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+    # global prods  # Declare produits as global to modify it
+    # prods = Produit.ProduitEntite([])
+    # # produits.ajouter_produits_depuis_csv("./data/produits.csv")
+    # prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
     
     print("Produits charges.")
 
