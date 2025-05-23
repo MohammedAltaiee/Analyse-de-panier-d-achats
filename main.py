@@ -25,12 +25,13 @@ async def test_tout_produits_get():
     return test_produits.afficher()
 
 @app.post("/test/produits")
-async def test_tout_produits_post(params: Produit.ProduitEntite.Item):
+async def test_tout_produits_post(payload: Produit.ProduitEntite.Item):
     p = Produit.ProduitEntite.Item()
     p.id = 12345
     p.nom = "whatwaaaa"
     p.prix = 3.1415
-    print(p)
+    print("P::: " + p)
+    print("PAYLOAD::: " + payload)
     return {"testing": p}
 
 # @app.post("/test/produits")
