@@ -1,5 +1,8 @@
-fastapi
-uvicorn[standard]
+# fastapi
+# uvicorn[standard]
 
+Flask 
+pydantic
 
 # pip install "fastapi[standard]" uvicorn
+# pip install Flask pydantic
