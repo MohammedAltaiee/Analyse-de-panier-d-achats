@@ -20,9 +20,9 @@ def root_bonjour():
     if prods.produits[0] == 0:
         res ={"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir n a pas de prix :D"}
     else:
-        rese ={"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir a un prix :("}
+        res ={"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir a un prix :("}
     
-    return jsonify({res})
+    return jsonify(res)
 
 
 @app.route("/test/produits", methods=["GET"])
