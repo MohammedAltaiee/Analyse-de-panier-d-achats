@@ -10,6 +10,17 @@ from pydantic import BaseModel
 import Produit
 # import ProduitEntite.Item
 
+# Configure logging (usually done once at the beginning of your script)
+logging.basicConfig(level=logging.DEBUG,  # Set the minimum level to capture
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    filename='app.log',  # Optional: log to a file
+                    filemode='w')  # Optional: overwrite the log file each time
+
+# Create a logger for your module (or use the root logger)
+logger = logging.getLogger(__name__)  # Or logging.getLogger('my_app')
+
+
+
 app = Flask(__name__)
 
 test_produits = Produit.ProduitEntite([])
@@ -64,14 +75,14 @@ def test_tout_produits_post():
 
 def main():
 
-    # Configure logging (usually done once at the beginning of your script)
-    logging.basicConfig(level=logging.DEBUG,  # Set the minimum level to capture
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    filename='app.log',  # Optional: log to a file
-                    filemode='w')  # Optional: overwrite the log file each time
+    # # Configure logging (usually done once at the beginning of your script)
+    # logging.basicConfig(level=logging.DEBUG,  # Set the minimum level to capture
+    #                 format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    #                 filename='app.log',  # Optional: log to a file
+    #                 filemode='w')  # Optional: overwrite the log file each time
 
-    # Create a logger for your module (or use the root logger)
-    logger = logging.getLogger(__name__)  # Or logging.getLogger('my_app')
+    # # Create a logger for your module (or use the root logger)
+    # logger = logging.getLogger(__name__)  # Or logging.getLogger('my_app')
 
 
     # produits = Produit.ProduitEntite([])
