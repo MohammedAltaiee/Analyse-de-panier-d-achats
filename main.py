@@ -25,7 +25,7 @@ print(prods)
 def root_bonjour():    
     res = {"message": "Bonjour par default :) Hello la classe NPower QC 2025."}
     print(prods)
-    if prods.produits[2] == 0:
+    if prods.produits[0][3] == 0:
         res ={"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir n a pas de prix :D"}
     else:
         res ={"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir a un prix :("}
