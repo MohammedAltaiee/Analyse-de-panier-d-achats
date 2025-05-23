@@ -3,48 +3,17 @@
 import json
 import os
 
-def load_json(filepath):
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"Erreur lors du chargement de {filepath}: {e}")
-        return None
 
-def main_menu():
-    print("=== Analyse de Panier d'Achats ===")
-    print("1. Afficher le panier")
-    print("2. Afficher les produits")
-    print("3. Quitter")
+import Produit
 
-def print_json(data, title):
-    print(f"\n--- {title} ---")
-    print(json.dumps(data, indent=2, ensure_ascii=False))
-    print()
+produits = Produit.ProduitEntite([])
 
 def main():
-    panier_path = os.path.join('.', 'data', 'panier.json')
-    produits_path = os.path.join('.', 'data', 'produits.json')
+    produits = Produit.ProduitEntite([])
+    produits. ajouter_produits_depuis_csv("./data/produits.csv")
 
-    panier = load_json(panier_path)
-    produits = load_json(produits_path)
+    produits.afficher()
 
-    if panier is None or produits is None:
-        print("Impossible de charger les fichiers nécessaires.")
-        return
-
-    while True:
-        main_menu()
-        choice = input("Votre choix: ").strip()
-        if choice == '1':
-            print_json(panier, "Panier")
-        elif choice == '2':
-            print_json(produits, "Produits")
-        elif choice == '3':
-            print("Au revoir !")
-            break
-        else:
-            print("Choix invalide. Veuillez réessayer.")
 
 if __name__ == "__main__":
     main()
