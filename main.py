@@ -106,8 +106,8 @@ def main():
     prods = Produit.ProduitEntite([])
     # prods.ajouter_produits_depuis_csv("./data/produits.csv")
     # prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
-
-    logger.debug("Debug message: {prods}")
+    prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+    logger.debug("MAIN Debug message: {prods}")
     
     print("Produits charges.")
 
