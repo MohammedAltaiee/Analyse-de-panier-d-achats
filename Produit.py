@@ -24,7 +24,7 @@ class ProduitEntite:
     # Methode pour ajouter un produit d'un fichier csv avec
     #  ID,Product,Unit Price (CAD)
     # 1,Alcool à Friction (bouteille de 500ml),$4.00
-    def ajouter_produits_depuis_csv(self, chemin_csv):
+    def ajouter_produits_depuis_csv(self, chemin_csv: str):
         try:
             with open(chemin_csv, mode='r', encoding='utf-8') as fichier:
                 lecteur = csv.DictReader(fichier)

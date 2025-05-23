@@ -16,7 +16,13 @@ test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 @app.route('/bonjour', methods=['GET'])
 def root_bonjour():
-    return jsonify({"message": "Bonjour Hello la classe NPower QC 2025"})
+    res = "message": "Bonjour Hello la classe NPower QC 2025."
+    if produits[0].prix = 0:
+        res +="Le Savoir n'a pas de prix :D"
+    else:
+        res +="Le Savoir a un prix :("
+    
+    return jsonify({res})
 
 
 @app.route("/test/produits", methods=["GET"])
@@ -47,9 +53,9 @@ def test_tout_produits_post():
 
 
 def main():
-    produits = Produit.ProduitEntite([])
+    # produits = Produit.ProduitEntite([])
     # produits.ajouter_produits_depuis_csv("./data/produits.csv")
-    produits.imprimer()
+    # produits.imprimer()
 
     # test_produits = Produit.ProduitEntite([])
     # test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
@@ -61,7 +67,14 @@ def main():
     # produits = Produit.ProduitEntite([])
     # produits.ajouter_produits_depuis_csv("./data/produits.csv")
     # print("Produits loaded.")
-    pass  # Or any other initialization
+    # or pass  # Or any other initialization
+
+    global produits  # Declare produits as global to modify it
+    produits = Produit.ProduitEntite([])
+    # produits.ajouter_produits_depuis_csv("./data/produits.csv")
+    produits.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+    
+    print("Produits charges.")
 
 if __name__ == "__main__":
     main()
