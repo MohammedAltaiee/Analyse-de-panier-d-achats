@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)  # Or logging.getLogger('my_app')
 app = Flask(__name__)
 
 test_produits = Produit.ProduitEntite([])
-test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
+# test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 global prods  # Declare produits as global to modify it
 prods = Produit.ProduitEntite([])
