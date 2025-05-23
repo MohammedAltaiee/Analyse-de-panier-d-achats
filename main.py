@@ -24,21 +24,35 @@ async def root_bonjour():
 async def test_tout_produits_get():
     return test_produits.afficher()
 
-@app.post("/test/produits")
-async def test_tout_produits_post(payload: Produit.ProduitEntite.Item):
-    p = Produit.ProduitEntite.Item()
-    p.id = 12345
-    p.nom = "whatwaaaa"
-    p.prix = 3.1415
-    print("P::: " + p)
-    print("PAYLOAD::: " + payload)
-    return {"testing": p}
+# @app.post("/test/produits")
+# async def test_tout_produits_post(payload: Produit.ProduitEntite.Item):
+#     p = Produit.ProduitEntite.Item()
+#     p.id = 12345
+#     p.nom = "whatwaaaa"
+#     p.prix = 3.1415
+#     print("P::: " + p)
+#     print("PAYLOAD::: " + payload)
+#     return {"testing": p}
 
 # @app.post("/test/produits")
 # async def test_tout_produits_post_text(params: Produit.ProduitEntite.ProduitType):
 #     print(str(params))
 #     return {"testing": str(params)}
 
+class ItemPayload(BaseModel):
+    id: int
+    nom: str
+    prix: float
+
+class RequestBody(BaseModel):
+    payload: ItemPayload
+
+
+@app.post("/test/produits")
+async def test_tout_produits_post(request_body: RequestBody):
+    item_data = request_body.payload
+    print(f"Received item: {item_data}")
+    return {"testing": item_data}
 
 
 def main():
