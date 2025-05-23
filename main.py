@@ -27,9 +27,9 @@ test_produits = Produit.ProduitEntite([])
 test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 global prods  # Declare produits as global to modify it
-prods = Produit.ProduitEntite([(0, "Le_Savoir",0)])
+# prods = Produit.ProduitEntite([(0, "Le_Savoir", 0)])
 # produits.ajouter_produits_depuis_csv("./data/produits.csv")
-# prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
 print(prods)
 logger.debug("Debut script, Debug message: {prods}")
 
