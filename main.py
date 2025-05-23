@@ -16,7 +16,7 @@ test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 @app.route('/bonjour', methods=['GET'])
 def root_bonjour():    
-    if produits[0].prix == 0:
+    if prods.produits[0] == 0:
         res ='"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir n a pas de prix :D"'
     else:
         rese ='"message": "Bonjour Hello la classe NPower QC 2025. Le Savoir a un prix :("'
@@ -68,10 +68,10 @@ def main():
     # print("Produits loaded.")
     # or pass  # Or any other initialization
 
-    global produits  # Declare produits as global to modify it
-    produits = Produit.ProduitEntite([])
+    global prods  # Declare produits as global to modify it
+    prods = Produit.ProduitEntite([])
     # produits.ajouter_produits_depuis_csv("./data/produits.csv")
-    produits.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
+    prods.ajouter_produit_tuple(id_produit=0, nom_produit="Le_Savoir", prix_produit=0)
     
     print("Produits charges.")
 

@@ -14,12 +14,36 @@ class ProduitEntite:
         # produits: list of tuples (id, nom, prix)
         # type: [(int, str, float)]
         self.produits = produits
+        # self._produits = produits if produits is not None else []  # Use a private attribute
 
     class Item(BaseModel):
         id: int
         nom: str
         prix: float
+    
+    # @property
+    # def produits(self):
+    #     return self._produits
 
+    # @produits.setter
+    # def produits(self, value):
+    #     if not isinstance(value, list):
+    #         raise ValueError("Produits doit etre une liste de tuples.")
+    #     # You might add further validation here, e.g., checking the tuple structure
+    #     self._produits = value
+
+    # def prix(self, id_produit: int) -> float | None:
+    #     for p in self.produits:
+    #         if p[0] == id_produit:
+    #             return p[2]
+    #     return None
+    
+    # def nom(self, id_produit: str)-> str | None:
+    #     for p in self.produits:
+    #         if p[0] == id_produit:
+    #             return p[1]
+    #     return None
+    
 
     # Methode pour ajouter un produit d'un fichier csv avec
     #  ID,Product,Unit Price (CAD)
