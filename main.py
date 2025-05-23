@@ -27,8 +27,8 @@ async def test_tout_produits_get():
 
 @app.post("/test/produits")
 async def test_tout_produits_post_text(params: Produit.ProduitEntite.ProduitType):
-    print(params.to_string())
-    return {"testing": params.to_string()}
+    print(str(params))
+    return {"testing": str(params)}
 
 
 
