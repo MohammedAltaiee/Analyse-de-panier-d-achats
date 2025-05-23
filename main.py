@@ -50,7 +50,7 @@ class RequestBody(BaseModel):
 
 @app.post("/test/produits")
 async def test_tout_produits_post(request_body: RequestBody):
-    item_data = request_body.payload
+    item_data : ItemPayload = request_body.payload
     print(f"Received item: {item_data}")
     return {"testing": item_data}
 
