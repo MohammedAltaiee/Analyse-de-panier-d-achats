@@ -12,8 +12,8 @@ import Produit
 
 
 
-test_produits = Produit.ProduitEntite([])
-test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
+# test_produits = Produit.ProduitEntite([])
+# test_produits.ajouter_produits_depuis_csv("./data/produits.csv")
 
 app = FastAPI()
 
@@ -21,9 +21,9 @@ app = FastAPI()
 async def root_bonjour():
     return {"message": "Bonjour Hello la classe NPower QC 2025 "}
 
-@app.get("/test/produits")
-async def test_tout_produits_get():
-    return test_produits.afficher()
+# @app.get("/test/produits")
+# async def test_tout_produits_get():
+#     return test_produits.afficher()
 
 # @app.post("/test/produits")
 # async def test_tout_produits_post(payload: Produit.ProduitEntite.Item):
@@ -51,7 +51,7 @@ class RequestBody(BaseModel):
 
 @app.post("/test/produits")
 async def test_tout_produits_post(request_body):
-    item_data  = query.request_body.payload
+    item_data : ItemPayload =  request_body.payload
     print(f"Received item: {item_data}")
     return {"testing": item_data}
 
