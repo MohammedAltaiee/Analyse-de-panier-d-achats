@@ -20,7 +20,7 @@ async def root_bonjour():
 async def test_tout_produits_get():
     return test_produits.afficher()
 
-@app.post("/test/produits/")
+@app.post("/test/produits")
 async def test_tout_produits_post(param: Produit.ProduitEntite.ProduitType):
     print(param)
     return {"testing": param}
